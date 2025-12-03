@@ -1,0 +1,79 @@
+version: '3.8'
+
+services:
+  apache:
+    build: ./apache
+    container_name: apache_frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./apache/sites:/var/www/localhost/htdocs
+      - ./apache/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./apache/conf/vhosts:/usr/local/apache2/conf/extra/vhosts
+      - ./logs:/usr/local/apache2/logs
+    networks:
+      - frontend-network
+      - backend-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    env_file: .env
+
+  mysql:
+    image: mysql:8.0.35
+    container_name: mysql_backend
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - backend-network
+    healthcheck: # Bonus 1: Healthcheck
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis_cache
+    volumes:
+      - redis_data:/data
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru --save 60 1 --loglevel warning
+    networks:
+      - backend-network
+    healthcheck: # Bonus 1: Healthcheck
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma_admin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    networks:
+      - backend-network
+    depends_on:
+      - mysql
+
+networks:
+  frontend-network:
+    driver: bridge
+  backend-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  redis_data:

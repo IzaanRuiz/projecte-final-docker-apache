@@ -1,0 +1,5 @@
+[Wed Dec 03 14:22:38.562009 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.65 (Unix) OpenSSL/3.5.4 PHP/8.3.27 configured -- resuming normal operations
+[Wed Dec 03 14:22:38.562602 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'httpd -D FOREGROUND'
+[Wed Dec 03 14:32:01.988297 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+[Wed Dec 03 14:33:50.709270 2025] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.65 (Unix) OpenSSL/3.5.4 PHP/8.3.27 configured -- resuming normal operations
+[Wed Dec 03 14:33:50.709998 2025] [core:notice] [pid 1:tid 1] AH00094: Command line: 'httpd -D FOREGROUND'

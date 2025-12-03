@@ -1,0 +1,2 @@
+{"time":"[03/Dec/2025:14:36:12 +0000]", "remoteIP":"172.18.0.1", "host":"frontend.local", "request":"GET / HTTP/1.1", "status":"301", "userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"}
+{"time":"[03/Dec/2025:14:37:05 +0000]", "remoteIP":"172.18.0.1", "host":"api.local", "request":"-", "status":"408", "userAgent":"-"}

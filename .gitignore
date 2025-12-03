@@ -1,0 +1,5 @@
+mysql_data/
+redis_data/
+.git/
+.DS_Store
+Thumbs.db
