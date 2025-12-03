@@ -22,26 +22,26 @@ Aquest projecte consisteix en el desplegament d'una arquitectura web completa ut
 
 ---
 
-## Evidències del Projecte (Lliurament)
+## Evidències del Projecte 
 
-A continuació es mostren les captures de pantalla requerides per a l'avaluació:
+A continuació es mostren les comprovacions amb captures de pantalla:
 
-### 1. Docker Compose PS (Serveis en execució)
+### 1. Docker Compose PS 
 *Captura mostrant tots els serveis actius i els healthchecks superats.*
-![Docker Compose PS](capturas/1-docker-ps.png)
+![Docker Compose PS](captures/docker-compose_ps.png)
 
-### 2. Navegador accedint a https://frontend.local (SSL)
+### 2. Navegador accedint a https://frontend.local 
 *Accés al Virtual Host segur amb certificat auto-signat, mostrant dades de Redis i MySQL.*
-![Frontend SSL](capturas/2-frontend.png)
+![Frontend SSL](captures/frontend.png)
 
-### 3. phpMyAdmin (Taules de la base de dades)
+### 3. phpMyAdmin 
 *Visualització de l'estructura de la base de dades i les taules `users` i `articles`.*
-![phpMyAdmin](capturas/3-phpmyadmin.png)
+![phpMyAdmin](captures/phpmyadmin.png)
 
-### 4. Output de l'API (JSON)
+### 4. Output de l'API 
 *Resposta de l'endpoint `/api/articles` retornant les dades en format JSON.*
-![API JSON](capturas/4-api-json.png)
+![API JSON](captures/api-articles.png)
 
 ### 5. Logs d'Apache
 *Registres de peticions del servidor mostrant el format JSON personalitzat.*
-![Logs Apache](capturas/5-logs.png)
+![Logs Apache](captures/logs.png)
